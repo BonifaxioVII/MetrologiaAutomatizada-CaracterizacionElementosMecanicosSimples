@@ -1,6 +1,3 @@
-import time
-start_time = time.time()
-
 print("1. Descargando modulos...")
 import PGradoFunciones as P
 
@@ -28,11 +25,7 @@ Recomendaciones:
 3. Tenga precaución con el brillo y las sombras.
 """
 
-end_time = time.time()
-total_time = end_time - start_time
 system("cls")
-print(f"1. Tiempo de carga del programa es de: {total_time} segundos")
-
 def crearVentana():
 	#Crear ventana
 	ventana = tk.Tk()
@@ -129,9 +122,7 @@ def paso_a_paso(Fig):
     boton_continuar = tk.Button(V2_1, text="Presione aqui para ver todas las imagenes unas por una.", command = mostrar_paso_a_paso)
     boton_continuar.grid(row=7, column=0, padx=10, pady=10, sticky="nw") 
     
-def analizar_fallas(Obj, t, F, Dp, material):  
-    start_time = time.time()
-    
+def analizar_fallas(Obj, t, F, Dp, material):    
     #Actualizar datos
     t, F, Dp, material = t.get(), F.get(), Dp.get(), material.get()
     
@@ -169,11 +160,6 @@ def analizar_fallas(Obj, t, F, Dp, material):
     fuerzas_criticas = Obj.modos_falla(modelo2)
     fuerzas_criticas = fuerzas_criticas[0]
     
-    #Medición del tiempo de ejecución
-    end_time = time.time()
-    total_time = end_time - start_time
-    print(f"3. Tiempo de procesamiento en la identificación de fallas: {total_time} segundos")
-
     # Crear un canvas para mostrar los resultados con scrollbar
     canvas = tk.Canvas(V3)
     canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -252,7 +238,6 @@ def analizar_imagen():
     V2 = tk.Toplevel(V1)
     V2.title("Resultados del Análisis Dimensional")
 
-    start_time = time.time()
     Fig = P.AnalisisFigura(imagen_path, 2, modelo1)
     
     #Bienvenida al usuario
@@ -270,12 +255,7 @@ def analizar_imagen():
         boton_salir.grid(row=10, column=0, padx=10, pady=10, sticky="nw")
         
         V1.mainloop()
-        
-    #Medición del tiempo de ejecución
-    end_time = time.time()
-    total_time = end_time - start_time
-    print(f"2. Tiempo de procesamiento de la imagen: {total_time} segundos")
-    
+            
     resultados = "Medidas útiles del eslabón: " 
     resultados += f"\nDc: {round(float(Fig.MedidasUtiles['Dc']),5)} cm"
     resultados += f"\nDo: {round(float(Fig.MedidasUtiles['Do']),5)} cm"
